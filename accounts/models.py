@@ -6,7 +6,7 @@ from django.conf import settings
 from django.db.models import Q
 from PIL import Image
 
-from course.models import Program
+from course.models import Course, Program
 from .validators import ASCIIUsernameValidator
 
 
@@ -82,7 +82,7 @@ class User(AbstractUser):
         elif self.is_student:
             return "Student"
         elif self.is_lecturer:
-            return "Lecturer"
+            return "Teacher"
         elif self.is_parent:
             return "Parent"
 
@@ -122,6 +122,7 @@ class StudentManager(models.Manager):
                         )
             qs = qs.filter(or_lookup).distinct() # distinct() is often necessary with Q lookups
         return qs
+
 
 
 class Student(models.Model):
@@ -168,3 +169,20 @@ class DepartmentHead(models.Model):
 
     def __str__(self):
         return "{}".format(self.user)
+
+
+class Professor(models.Model):
+    nome = models.CharField(max_length=255)
+
+class Disciplina(models.Model):
+    turma = models.CharField(max_length=255)
+    semestre = models.IntegerField()
+
+class Teste1(models.Model):
+    professor = models.ForeignKey(
+        User, 
+        limit_choices_to={'is_lecturer': True},
+        on_delete=models.CASCADE
+    )
+    disciplina = models.ForeignKey(Course, on_delete=models.CASCADE)
+    celula = models.TextField()

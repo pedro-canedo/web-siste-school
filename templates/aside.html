@@ -49,7 +49,7 @@
 				<a href="{% url 'admin_panel' %}"><i class="fas fa-user-tie"></i>Admin Panel</a>
 			</li>
 			<li class="{% if request.path == lec %}active{% endif %}">
-				<a href="{% url 'lecturer_list' %}"><i class="fas fa-chalkboard-teacher"></i>Lecturers</a>
+				<a href="{% url 'lecturer_list' %}"><i class="fas fa-chalkboard-teacher"></i>Teachers</a>
 			</li>
 			<li class="{% if request.path == stu %}active{% endif %}">
 				<a href="{% url 'student_list' %}"><i class="fas fa-user-graduate"></i>Students</a>
@@ -103,6 +103,11 @@
 			<li class="{% if request.path == ar %}active{% endif %}">
 				<a href="{% url 'ass_results' %}"><i class="fa fa-spell-check"></i>Assesment Results</a>
 			</li>
+            
+            <li class="{% if request.path == ar %}active{% endif %}">
+				<a href="{% url 'teste' %}"><i class="fa fa-spell-check"></i>test</a>
+			</li>
+
 			<li class="{% if request.path == cr %}active{% endif %}">
 				<a href="{% url 'course_registration' %}"><i class="fas fa-plus"></i>Add & Drop Course</a>
 			</li>

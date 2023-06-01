@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -6,7 +7,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
-from accounts.models import User, Student
+from accounts.models import Teste1, User, Student
 from app.models import Session, Semester
 from course.models import Course
 from accounts.decorators import lecturer_required, student_required
@@ -567,3 +568,35 @@ def course_registration_form(request):
         response['Content-Disposition'] = 'inline; filename='+fname+''
         return response
     return response
+
+
+class Teste1Form(forms.ModelForm):
+    class Meta:
+        model = Teste1
+        fields = ['disciplina', 'professor', 'celula']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['disciplina'].queryset = Course.objects.all()
+        self.fields['disciplina'].widget.attrs.update({'class': 'form-control'})
+        self.fields['professor'].queryset = User.objects.filter(is_lecturer=True)
+        self.fields['professor'].widget.attrs.update({'class': 'form-control'})
+        self.fields['celula'].widget.attrs.update({'class': 'form-control'})
+
+
+
+@login_required
+@student_required
+def teste(request):
+    if request.method == 'POST':
+        form = Teste1Form(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = Teste1Form()
+    
+    teste1_list = Teste1.objects.all()
+
+    return render(request, 'result/teste.html', {'form': form, 'teste1_list': teste1_list})
+
+

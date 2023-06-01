@@ -99,7 +99,7 @@ def profile_single(request, id):
         context = {
             'title': user.get_full_name,
             "user": user,
-            "user_type": "Lecturer",
+            "user_type": "Teacher",
             "courses": courses,
             'current_session': current_session,
             'current_semester': current_semester,
@@ -190,7 +190,7 @@ def staff_add_view(request):
         form = StaffAddForm()
 
     context = {
-        'title': 'Lecturer Add | DjangoSMS',
+        'title': 'Teacher Add | DjangoSMS',
         'form': form,
     }
 
@@ -207,14 +207,14 @@ def edit_staff(request, pk):
         if form.is_valid():
             form.save()
 
-            messages.success(request, 'Lecturer ' + full_name + ' has been updated.')
+            messages.success(request, 'Teacher ' + full_name + ' has been updated.')
             return redirect('lecturer_list')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         form = ProfileUpdateForm(instance=instance)
     return render(request, 'accounts/edit_lecturer.html', {
-        'title': 'Edit Lecturer | DjangoSMS',
+        'title': 'Edit Teacher | DjangoSMS',
         'form': form,
     })
 
@@ -227,7 +227,7 @@ class LecturerListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = "Lecturers | DjangoSMS"
+        context['title'] = "Teachers | DjangoSMS"
         return context
 
 
@@ -244,7 +244,7 @@ def delete_staff(request, pk):
     lecturer = get_object_or_404(User, pk=pk)
     full_name = lecturer.get_full_name
     lecturer.delete()
-    messages.success(request, 'Lecturer ' + full_name + ' has been deleted.')
+    messages.success(request, 'Teacher ' + full_name + ' has been deleted.')
     return redirect('lecturer_list')
 # ########################################################
 

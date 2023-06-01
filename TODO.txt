@@ -19,7 +19,7 @@ TODO:
 				- A calender that shows upcoming events
 			- Enrollments per course
 				- How many students enroll each course
-			- Website traffic over a specific user type (Admin, Student, Lecturer, etc.)
+			- Website traffic over a specific user type (Admin, Student, Teacher, etc.)
 	- Admin Panel:
 		- Restrict course add and drop by date range (start and end date)
 	- Apply Filtering for all tables.

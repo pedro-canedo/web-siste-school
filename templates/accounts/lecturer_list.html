@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i> Lecturers</div>
+<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Home</a> <i>&rsaquo;</i> Teachers</div>
 
 {% if request.user.is_superuser %}
-<a class="add-button" href="{% url 'add_lecturer' %}"><i class="fas fa-plus"></i>Add Lecturer</a>
+<a class="add-button" href="{% url 'add_lecturer' %}"><i class="fas fa-plus"></i>Add Teacher</a>
 {% endif %}
 
-<p class="title-1"><i class="fas fa-chalkboard-teacher"></i>Lecturers List</p>
+<p class="title-1"><i class="fas fa-chalkboard-teacher"></i>Teachers List</p>
 <div class="title-line"></div>
 
 {% if messages %}
@@ -80,11 +80,11 @@
                   <td></td>
                   <td>
                   <span class="text-danger">
-                    <i class="far fa-frown"></i>No Lecturer(s).
+                    <i class="far fa-frown"></i>No Teacher(s).
                     {% if request.user.is_superuser %}
                     <a href="{% url 'add_lecturer' %}">
                     <i class="primary" style="font-size: 22px;">
-                       Add Lecturer Now.
+                       Add Teacher Now.
                     </i>
                     {% endif %}
                     </a>

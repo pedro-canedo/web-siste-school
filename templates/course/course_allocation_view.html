@@ -27,7 +27,7 @@
 
 <div class="content-center">
     <form class="search-form" action="" method="POST">{% csrf_token %}
-        <input class="au-input" type="text" name="lecturer" placeholder="Lecturer" value="{{ request.GET.lecturer }}"/>
+        <input class="au-input" type="text" name="lecturer" placeholder="Teacher" value="{{ request.GET.lecturer }}"/>
         <input class="au-input" type="text" name="course" placeholder="Course" value="{{ request.GET.course }}"/>
         <button class="btn btn-light" type="submit">
             <i class="fas fa-search"></i> filter
@@ -40,7 +40,7 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Lecturer</th>
+                <th>Teacher</th>
                 <th>Courses</th>
                 {% if request.user.is_superuser %}
                 <th>Action</th>

@@ -28,7 +28,6 @@ class CourseAddForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'class': 'form-control'})
         self.fields['code'].widget.attrs.update({'class': 'form-control'})
-        # self.fields['courseUnit'].widget.attrs.update({'class': 'form-control'})
         self.fields['credit'].widget.attrs.update({'class': 'form-control'})
         self.fields['summary'].widget.attrs.update({'class': 'form-control'})
         self.fields['program'].widget.attrs.update({'class': 'form-control'})

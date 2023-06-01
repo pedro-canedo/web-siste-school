@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    add_score, add_score_for, grade_result, assessment_result, 
+    add_score, add_score_for, grade_result, assessment_result, teste,
     course_registration_form, result_sheet_pdf_view
 )
 
@@ -11,6 +11,7 @@ urlpatterns = [
     
     path('grade/', grade_result, name="grade_results"),
     path('assessment/', assessment_result, name="ass_results"),
+    path('teste/', teste, name='teste'),
 
 	path('result/print/<int:id>/', result_sheet_pdf_view, name='result_sheet_pdf_view'),
 	path('registration/form/', course_registration_form, name='course_registration_form'),
