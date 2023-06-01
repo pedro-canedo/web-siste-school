@@ -7,6 +7,10 @@
     <form method="post" class="mt-5">
         {% csrf_token %}
         <div class="form-group">
+            <label>Semestre</label>
+            {{ form.semestre }}
+        </div>
+        <div class="form-group">
             <label>Disciplina</label>
             {{ form.disciplina }}
         </div>
@@ -29,17 +33,21 @@
                     <th scope="col">Professor</th>
                     <th scope="col">Disciplina</th>
                     <th scope="col">Celula</th>
+                    <th scope="col">Semestre</th>
                 </tr>
             </thead>
             <tbody>
-                {% for teste1 in teste1_list %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ teste1.professor }}</td>
-                    <td>{{ teste1.disciplina }}</td>
-                    <td>{{ teste1.celula }}</td>
-                </tr>
-                {% endfor %}
+                {% if teste1_list|length > 0 %}
+                    {% for teste1 in teste1_list %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ teste1.professor }}</td>
+                            <td>{{ teste1.disciplina }}</td>
+                            <td>{{ teste1.celula }}</td>
+                            <td>{{ teste1.semestre.semester }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
     </div>

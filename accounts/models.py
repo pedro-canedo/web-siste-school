@@ -5,6 +5,7 @@ from django.conf import settings
 
 from django.db.models import Q
 from PIL import Image
+from app.models import Semester
 
 from course.models import Course, Program
 from .validators import ASCIIUsernameValidator
@@ -171,12 +172,6 @@ class DepartmentHead(models.Model):
         return "{}".format(self.user)
 
 
-class Professor(models.Model):
-    nome = models.CharField(max_length=255)
-
-class Disciplina(models.Model):
-    turma = models.CharField(max_length=255)
-    semestre = models.IntegerField()
 
 class Teste1(models.Model):
     professor = models.ForeignKey(
@@ -186,3 +181,10 @@ class Teste1(models.Model):
     )
     disciplina = models.ForeignKey(Course, on_delete=models.CASCADE)
     celula = models.TextField()
+    semestre = models.ForeignKey(
+    Semester,
+    on_delete=models.CASCADE,
+    default=1
+)
+        
+    

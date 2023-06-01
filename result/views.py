@@ -573,7 +573,7 @@ def course_registration_form(request):
 class Teste1Form(forms.ModelForm):
     class Meta:
         model = Teste1
-        fields = ['disciplina', 'professor', 'celula']
+        fields = ['disciplina', 'professor', 'celula', 'semestre']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -582,6 +582,7 @@ class Teste1Form(forms.ModelForm):
         self.fields['professor'].queryset = User.objects.filter(is_lecturer=True)
         self.fields['professor'].widget.attrs.update({'class': 'form-control'})
         self.fields['celula'].widget.attrs.update({'class': 'form-control'})
+        self.fields['semestre'].widget.attrs.update({'class': 'form-control'})
 
 
 
